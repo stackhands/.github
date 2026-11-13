@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#004D40"/>
+  <!-- three stacked layers: a software stack -->
+  <g fill="none" stroke-linejoin="round" stroke-width="22">
+    <path d="M256 104 L408 180 L256 256 L104 180 Z" fill="#F1DB4B" stroke="#F1DB4B"/>
+    <path d="M104 252 L256 328 L408 252" stroke="#FFFFFF"/>
+    <path d="M104 324 L256 400 L408 324" stroke="#FF655D"/>
+  </g>
+</svg>
