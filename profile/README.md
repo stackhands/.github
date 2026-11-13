@@ -12,8 +12,10 @@ They come from running the site layer of a national supercomputer, and each one 
 | [eb-local](https://github.com/stackhands/eb-local) | Install software with EasyBuild on top of EESSI into a directory a user or project owns |
 | [eessi-arch-guard](https://github.com/stackhands/eessi-arch-guard) | Reload EESSI in a Slurm step that inherited it for another CPU or GPU |
 | [eb-keep-logs](https://github.com/stackhands/eb-keep-logs) | Keep a failed build's EasyBuild log and command output; rotate a pipeline's log tree |
+| [rfc9162](https://github.com/stackhands/rfc9162) | An append-only Merkle log hashed as RFC 9162, with tiled storage and signed checkpoints, for build logs and records that can be checked later |
 
-eb-stack is written in Rust.
-The other tools are moving from Bash and Python to Zig, so that every tool is one static binary per CPU architecture.
+eb-stack and rfc9162 are written in Rust.
+The other tools are moving from Bash and Python to Zig, each still in its own repository, on a shared Zig library for running EasyBuild, keeping private files and logs, and locked state.
+Each tool is then one static binary per CPU architecture.
 
 Each repository has its own README with installation and usage, and an EasyBuild recipe installs each tool as a module.
