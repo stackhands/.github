@@ -2,7 +2,7 @@
 
 # stackhands
 
-Tools for building, installing and maintaining an HPC software stack with [EasyBuild](https://easybuild.io) on top of [EESSI](https://www.eessi.io).
+Tools for building, installing and maintaining an HPC software stack with [EasyBuild](https://easybuild.io) on top of [EESSI](https://www.eessi.io), the European Environment for Scientific Software Installations.
 They come from running the site layer of a national supercomputer, and each one does one job.
 
 | Tool | Job |
@@ -14,6 +14,6 @@ They come from running the site layer of a national supercomputer, and each one 
 | [eb-keep-logs](https://github.com/stackhands/eb-keep-logs) | Keep a failed build's EasyBuild log and command output; rotate a pipeline's log tree |
 
 eb-stack is written in Rust.
-The other tools are moving from Bash and Python to Zig, so that every tool ships as one static binary per CPU architecture.
+The other tools are moving from Bash and Python to Zig, so that every tool is one static binary per CPU architecture.
 
 Each repository has its own README with installation and usage, and an EasyBuild recipe installs each tool as a module.
