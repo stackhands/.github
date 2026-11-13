@@ -3,7 +3,7 @@
 # stackhands
 
 Tools for building, installing and maintaining an HPC software stack with [EasyBuild](https://easybuild.io) on top of [EESSI](https://www.eessi.io), the European Environment for Scientific Software Installations.
-They come from running the site layer of a national supercomputer, and each one does one job.
+They grew out of running a site software layer, and each one does one job.
 
 | Tool | Job |
 |---|---|
