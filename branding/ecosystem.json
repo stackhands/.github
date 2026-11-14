@@ -1,0 +1,51 @@
+[
+  {
+    "name": "eb-stack",
+    "repo": "https://github.com/stackhands/eb-stack",
+    "docs": "https://eb-stack.rgoswami.me/",
+    "job": "Solve, shard and plan an EasyBuild build list; admit builds under a scratch inode budget",
+    "lang": "Rust"
+  },
+  {
+    "name": "eb-staged-rebuild",
+    "repo": "https://github.com/stackhands/eb-staged-rebuild",
+    "docs": "https://stackhands.github.io/eb-staged-rebuild/",
+    "job": "Rebuild an installation in a staged tree and swap it in, so running jobs keep their paths",
+    "lang": "Zig and Python"
+  },
+  {
+    "name": "eessi-arch-guard",
+    "repo": "https://github.com/stackhands/eessi-arch-guard",
+    "docs": "https://stackhands.github.io/eessi-arch-guard/",
+    "job": "Reload EESSI in a Slurm task that inherited it for another CPU or GPU",
+    "lang": "Zig and Python"
+  },
+  {
+    "name": "eb-local",
+    "repo": "https://github.com/stackhands/eb-local",
+    "docs": "https://stackhands.github.io/eb-local/",
+    "job": "Install software with EasyBuild on top of EESSI into a directory a user or project owns",
+    "lang": "Bash"
+  },
+  {
+    "name": "eb-keep-logs",
+    "repo": "https://github.com/stackhands/eb-keep-logs",
+    "docs": "https://stackhands.github.io/eb-keep-logs/",
+    "job": "Keep a failed build's EasyBuild log and command output; rotate a pipeline's log tree",
+    "lang": "Zig"
+  },
+  {
+    "name": "rfc9162",
+    "repo": "https://github.com/stackhands/rfc9162",
+    "docs": "https://stackhands.github.io/rfc9162/",
+    "job": "Append-only Merkle logs hashed as RFC 9162, with tiled storage and signed checkpoints",
+    "lang": "Rust"
+  },
+  {
+    "name": "zig-common",
+    "repo": "https://github.com/stackhands/zig-common",
+    "docs": "https://stackhands.github.io/zig-common/",
+    "job": "The shared Zig library under the Zig tools: system calls, checked files, child processes",
+    "lang": "Zig"
+  }
+]
