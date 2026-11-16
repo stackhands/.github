@@ -7,6 +7,13 @@
     "lang": "Rust"
   },
   {
+    "name": "eb-pipeline",
+    "repo": "https://github.com/stackhands/eb-pipeline",
+    "docs": "https://github.com/stackhands/eb-pipeline#readme",
+    "job": "Drive an EasyBuild pipeline from one per-site TOML file, calling the other tools as subprocesses",
+    "lang": "Rust"
+  },
+  {
     "name": "eb-staged-rebuild",
     "repo": "https://github.com/stackhands/eb-staged-rebuild",
     "docs": "https://stackhands.github.io/eb-staged-rebuild/",
@@ -25,7 +32,7 @@
     "repo": "https://github.com/stackhands/eb-local",
     "docs": "https://stackhands.github.io/eb-local/",
     "job": "Install software with EasyBuild on top of EESSI into a directory a user or project owns",
-    "lang": "Bash"
+    "lang": "Zig"
   },
   {
     "name": "eb-keep-logs",
