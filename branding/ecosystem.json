@@ -3,35 +3,35 @@
     "name": "eb-stack",
     "repo": "https://github.com/stackhands/eb-stack",
     "docs": "https://eb-stack.rgoswami.me/",
-    "job": "Solve, shard and plan an EasyBuild build list; admit builds under a scratch inode budget",
+    "job": "Turn conda-forge, Spack, PyPI, CRAN and Cargo recipes into easyconfigs; solve, shard and plan an EasyBuild build list",
     "lang": "Rust"
   },
   {
     "name": "eb-staged-rebuild",
     "repo": "https://github.com/stackhands/eb-staged-rebuild",
     "docs": "https://stackhands.github.io/eb-staged-rebuild/",
-    "job": "Rebuild an installation in a staged tree and swap it in, so running jobs keep their paths",
+    "job": "Rebuild an installation beside the live one and swap it in, for a stack outside CernVM-FS that jobs read during the rebuild",
     "lang": "Zig and Python"
   },
   {
     "name": "eessi-arch-guard",
     "repo": "https://github.com/stackhands/eessi-arch-guard",
     "docs": "https://stackhands.github.io/eessi-arch-guard/",
-    "job": "Reload EESSI in a Slurm task that inherited it for another CPU or GPU",
+    "job": "Reload EESSI in a Slurm task that inherited a stack loaded for another CPU or GPU, as srun from a login shell does",
     "lang": "Zig and Python"
   },
   {
     "name": "eb-local",
     "repo": "https://github.com/stackhands/eb-local",
     "docs": "https://stackhands.github.io/eb-local/",
-    "job": "Install software with EasyBuild on top of EESSI into a directory a user or project owns",
-    "lang": "Bash"
+    "job": "Build on EESSI-extend inside a Slurm job's node-local disk, compile your own code with RPATH, list and uninstall per CPU target",
+    "lang": "Zig"
   },
   {
     "name": "eb-keep-logs",
     "repo": "https://github.com/stackhands/eb-keep-logs",
     "docs": "https://stackhands.github.io/eb-keep-logs/",
-    "job": "Keep a failed build's EasyBuild log and command output; rotate a pipeline's log tree",
+    "job": "Keep a failed EasyBuild command's own output, which --tmp-logdir does not; rotate a pipeline's log tree",
     "lang": "Zig"
   },
   {
