@@ -1,0 +1,43 @@
+name: docs-pixi
+
+on:
+  workflow_call:
+    inputs:
+      upload-on-push-only:
+        description: Upload the Pages artifact only on pushes to main
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: prefix-dev/setup-pixi@9936258fee697aff89b3fed6ca1f80a382ef694e # v0.11.3
+        with:
+          environments: docs
+          cache: true
+          locked: true
+
+      - name: Build
+        run: pixi run -e docs docbld
+        env:
+          DOCS_SOURCE_REF: ${{ github.sha }}
+
+      - name: External links
+        run: pixi run -e docs linkcheck
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        if: ${{ !inputs['upload-on-push-only'] || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+        with:
+          path: docs/build/html
