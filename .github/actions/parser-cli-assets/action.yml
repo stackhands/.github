@@ -1,0 +1,45 @@
+name: parser-cli-assets
+description: Generate bash and zsh completions plus a man page from an argparse parser.
+inputs:
+  pythonpath:
+    description: PYTHONPATH passed to the generator commands
+    required: false
+    default: .
+  parser_ref:
+    description: Dotted parser callable path for shtab (module.function)
+    required: true
+  parser_module:
+    description: Module path for argparse-manpage --module
+    required: true
+  parser_function:
+    description: Function name for argparse-manpage --function
+    required: true
+  prog:
+    description: Program name passed to shtab and argparse-manpage
+    required: true
+  out_completions_dir:
+    description: Output directory for completion files
+    required: true
+  out_man_dir:
+    description: Output directory for the man page
+    required: true
+  out_bash_file:
+    description: Output filename for the bash completion script
+    required: true
+  out_zsh_file:
+    description: Output filename for the zsh completion script
+    required: true
+  out_man_file:
+    description: Output filename for the man page
+    required: true
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: |
+        set -euo pipefail
+        python -m pip install "shtab==1.7.2" "argparse-manpage==4.6"
+        install -d "${{ inputs.out_completions_dir }}" "${{ inputs.out_man_dir }}"
+        PYTHONPATH="${{ inputs.pythonpath }}" shtab --shell bash --prog "${{ inputs.prog }}" "${{ inputs.parser_ref }}" > "${{ inputs.out_completions_dir }}/${{ inputs.out_bash_file }}"
+        PYTHONPATH="${{ inputs.pythonpath }}" shtab --shell zsh --prog "${{ inputs.prog }}" "${{ inputs.parser_ref }}" > "${{ inputs.out_completions_dir }}/${{ inputs.out_zsh_file }}"
+        PYTHONPATH="${{ inputs.pythonpath }}" argparse-manpage --module "${{ inputs.parser_module }}" --function "${{ inputs.parser_function }}" --prog "${{ inputs.prog }}" --output "${{ inputs.out_man_dir }}/${{ inputs.out_man_file }}"
