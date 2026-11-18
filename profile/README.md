@@ -31,5 +31,5 @@ The other tools are moving from Bash and Python to Zig, each still in its own re
 Each tool is then one static binary per CPU architecture.
 That matters most for eessi-arch-guard, which runs once per Slurm task: its Python prolog takes 46 ms per task where the Zig binary takes 3.5 ms (`tests/measure_noop.py`, cold, on one workstation with the archdetect stub).
 
-Each repository has its own README and documentation site, and each release carries its binaries with checksums.
+Each repository has its own README and documentation site, and each tool's release carries its binaries with checksums; zig-common, a library, is released as a tag.
 The logos, the table above and the cross-links in every README and site come from [`branding/`](https://github.com/stackhands/.github/tree/main/branding).
