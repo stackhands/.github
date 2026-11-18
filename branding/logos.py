@@ -93,6 +93,22 @@ def merkle(p):
     <path d="M40 18 l5 5 l9 -10" stroke="{p['accInk']}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>'''
 
 
+def pipeline(p):
+    return f'''
+    <path d="M24 40 H36 M58 40 H70" stroke="{p['teal']}" stroke-width="3" stroke-linecap="round"/>
+    <path d="M32 36 l4 4 l-4 4 M66 36 l4 4 l-4 4" stroke="{p['teal']}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <rect x="2" y="22" width="22" height="36" rx="5" fill="{p['back1']}" stroke="{p['teal']}" stroke-width="2.5"/>
+    <rect x="36" y="22" width="22" height="36" rx="5" fill="{p['back2']}" stroke="{p['teal']}" stroke-width="2.5"/>
+    <rect x="70" y="22" width="22" height="36" rx="5" fill="{p['front']}" stroke="{p['ink']}" stroke-width="2.5"/>
+    <rect x="7" y="31" width="12" height="4" rx="1.5" fill="{p['teal']}"/>
+    <rect x="7" y="40" width="8" height="4" rx="1.5" fill="{p['teal']}" opacity="0.6"/>
+    <rect x="41" y="31" width="12" height="4" rx="1.5" fill="{p['teal']}"/>
+    <rect x="41" y="40" width="8" height="4" rx="1.5" fill="{p['teal']}" opacity="0.6"/>
+    <rect x="75" y="31" width="12" height="4" rx="1.5" fill="{p['line']}"/>
+    <circle cx="78" cy="64" r="15" fill="{p['acc']}" stroke="{p['ink']}" stroke-width="2"/>
+    <path d="M73 56.5 v15 l12 -7.5 z" fill="{p['accInk']}" stroke="{p['accInk']}" stroke-width="1.5" stroke-linejoin="round"/>'''
+
+
 TOOLS = {
     "eb-staged-rebuild": (staged, "staged rebuild: a staged tree exchanged with the live one"),
     "eessi-arch-guard": (guard, "a CPU die guarded by a shield"),
@@ -100,6 +116,7 @@ TOOLS = {
     "zig-common": (common, "one shared core wired to three tools"),
     "eb-local": (local, "EESSI layers above a folder you own"),
     "rfc9162": (merkle, "a Merkle tree with a verified root"),
+    "eb-pipeline": (pipeline, "three build stages run in order"),
 }
 
 FONT = "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
