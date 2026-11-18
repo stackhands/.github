@@ -1,0 +1,27 @@
+name: large file audit
+
+on:
+  workflow_call:
+    inputs:
+      file-size-threshold:
+        description: Largest file size allowed in repository history
+        required: false
+        type: string
+        default: '500K'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: repository history stays within the size limit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Audit large files
+        uses: HaoZeke/large-file-auditor@073018dbb5800643bbd19b305a7a3cbbd5cd67c0 # v0.1.0
+        with:
+          file-size-threshold: ${{ inputs['file-size-threshold'] }}
