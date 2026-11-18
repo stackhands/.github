@@ -16,6 +16,15 @@ The READMEs of eb-local, eb-staged-rebuild, eessi-arch-guard and eb-keep-logs sa
 | <img src="https://raw.githubusercontent.com/stackhands/rfc9162/main/branding/logo/mark.svg" width="40" alt=""> | [rfc9162](https://github.com/stackhands/rfc9162) | Append-only Merkle logs hashed as RFC 9162, with tiled storage and signed checkpoints | [docs](https://stackhands.github.io/rfc9162/) |
 | <img src="https://raw.githubusercontent.com/stackhands/zig-common/main/branding/logo/mark.svg" width="40" alt=""> | [zig-common](https://github.com/stackhands/zig-common) | The shared Zig library under the Zig tools: system calls, checked files, child processes | [docs](https://stackhands.github.io/zig-common/) |
 
+## How the tools fit
+
+The tools call each other through their command lines, so a site can adopt one without the rest.
+
+- **A user installs and runs software.** `eb-local` builds on EESSI-extend in a Slurm job's node-local disk, one tree per CPU target. `eb-local env`, which loads those modules in a new shell or job, runs `eessi-arch-guard --shell` when the guard is installed, and `eb-local doctor` reports the target the guard selects.
+- **A user submits a job.** `eessi-arch-guard --check-submit --partition NAME` asks `eb-stack stack arch` whether every loaded module, from EESSI or from the user's own EESSI-extend tree, exists for that partition's CPU target, before anything is queued. As the Slurm `TaskProlog`, the guard then reloads a stack the task inherited from a node of another type.
+- **A site learns what is used.** The guard's Lmod site package can write `ModuleUsageTracking` records; `eb-keep-logs usage --active` turns them into the installed software that was loaded, which `eb-stack stack gap --site` accepts when planning the next stack.
+- **A site builds and rebuilds.** `eb-pipeline` reads one site file and drives `eb-stack stack shard` and `stack admit` for planning and inode admission, `eb-staged-rebuild run` for a rebuild that jobs keep reading during, and `eb-keep-logs failed` and `rotate` for the logs. `eb-staged-rebuild run --ledger-config` records each publication with `eb-stack ledger append`, and `eb-stack ledger backfill`, `anchor` and `project` maintain that ledger, on `rfc9162`'s tiled Merkle log.
+
 eb-stack and rfc9162 are written in Rust.
 The other tools are moving from Bash and Python to Zig, each still in its own repository, on a shared Zig library for running EasyBuild, keeping private files and logs, and locked state.
 Each tool is then one static binary per CPU architecture.
